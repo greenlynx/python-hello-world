@@ -10,22 +10,21 @@ repos:
       - id: check-yaml
       - id: check-toml
 
+-   repo: https://github.com/ambv/black
+    rev: 22.3.0
+    hooks:
+    - id: black
+
+# -   repo: https://gitlab.com/pycqa/flake8
+#     rev: 4.0.1
+#     hooks:
+#     -   id: flake8
+#         exclude: ^docs/
+
 -   repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
     -   id: isort
-        exclude: ^docs/
-
--   repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: 'v1.6.0'
-    hooks:
-    -   id: autopep8
-        exclude: ^docs/
-
--   repo: https://gitlab.com/pycqa/flake8
-    rev: 4.0.1
-    hooks:
-    -   id: flake8
         exclude: ^docs/
 
 -   repo: https://github.com/pre-commit/mirrors-mypy

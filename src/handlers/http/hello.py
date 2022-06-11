@@ -2,4 +2,7 @@ import json
 
 
 def handler(event, context):
-    return {"statusCode": 200, "body": json.dumps({"message": "Hello world!"})}
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"message": "Hello world!", "fddfdsfds:": "fd", "f": "fdfdfdkwsssss"}),
+    }
