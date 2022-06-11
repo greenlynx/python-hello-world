@@ -1,0 +1,11 @@
+{
+    // Editor settings
+    "editor.tabSize": 4,
+    "editor.rulers": [80, 120],
+    "editor.renderWhitespace": "trailing",
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
+}
