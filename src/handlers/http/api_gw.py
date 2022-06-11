@@ -38,8 +38,8 @@ class APIGWPayloadV2RequestDict(TypedDict):
 
 
 class APIGWPayloadV2ResponseDict(TypedDict):
-    cookies: List[str]
-    isBase64Encoded: bool
+    # cookies: List[str]
+    # isBase64Encoded: bool
     statusCode: int
-    headers: Dict[str, str]
+    # headers: Dict[str, str]
     body: str
