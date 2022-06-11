@@ -5,8 +5,8 @@
     "editor.renderWhitespace": "trailing",
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
-        "files.insertFinalNewline": true,
-        "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "mypy.runUsingActiveInterpreter": true
 }
