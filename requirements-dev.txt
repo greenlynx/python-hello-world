@@ -5,7 +5,7 @@ mypy
 isort
 black
 pre-commit
-autopep8
+autoflake
 
 # CDK
 aws-cdk-lib
