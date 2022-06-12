@@ -28,6 +28,11 @@ repos:
         exclude: ^docs/
         args: [--config, setup.cfg]
 
+-   repo: https://github.com/PyCQA/pylint
+    rev: v2.14.1
+    hooks:
+    -   id: pylint
+
 -   repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
