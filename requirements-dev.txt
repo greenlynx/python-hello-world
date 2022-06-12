@@ -1,19 +1,23 @@
 -r requirements.txt
 
-# Linting/Tooling
+# General tooling
+pre-commit
+pyupgrade
+
+# Linting
 pylint
 flake8
+flake8-pytest-style
 mypy
 isort
 black
-pre-commit
 autoflake
-pyupgrade
 
 # Testing
 pytest
 pytest-cov
 pytest-gitignore
+mutmut
 
 # Security
 bandit

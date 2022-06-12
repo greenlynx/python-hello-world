@@ -1,4 +1,6 @@
 .venv
 cdk.out
 .*_cache
+.*-cache
 .coverage
+__pycache__

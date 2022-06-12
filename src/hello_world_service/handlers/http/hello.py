@@ -1,6 +1,6 @@
 import json
 
-from api_gw import (
+from src.hello_world_service.handlers.http.api_gw import (
     APIGWPayloadV2RequestContextDict,
     APIGWPayloadV2RequestDict,
     APIGWPayloadV2ResponseDict,
