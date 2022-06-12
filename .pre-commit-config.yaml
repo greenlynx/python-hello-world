@@ -55,7 +55,7 @@ repos:
     rev: 1.7.4
     hooks:
     -   id: bandit
-        args: [-c, .bandit.yml, src]
+        args: [-c, .bandit.yml, -r, src]
         always_run: true
 
 -   repo: local
