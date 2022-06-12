@@ -16,6 +16,9 @@ jobs:
         with:
           python-version: '3.9.x'
 
+      - run: python -m venv .venv
+      - run: source .venv/bin/activate
+      - run: pip install -r ./requirements-dev.txt
       - run: pre-commit run --all-files
 
       - run: cdk synth
