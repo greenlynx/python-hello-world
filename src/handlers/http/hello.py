@@ -12,5 +12,11 @@ def handler(
 ) -> APIGWPayloadV2ResponseDict:
     return {
         "statusCode": 200,
-        "body": json.dumps({"message": "Hello world!"}),
+        "body": json.dumps(
+            {
+                "message": "Hello world!",
+                "foo": event["rawQueryString"],
+                "bar": context["domainName"],
+            }
+        ),
     }
