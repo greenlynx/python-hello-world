@@ -1,7 +1,6 @@
 import json
 
-# sys.path.append(r"../src")
-from src.hello_world_service.handlers.http import hello
+import hello
 
 
 def test_it_says_hello():
