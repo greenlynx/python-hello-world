@@ -8,10 +8,14 @@ isort
 black
 pre-commit
 autoflake
+pyupgrade
 
 # Testing
 pytest
 pytest-cov
+
+# Security
+bandit
 
 # CDK
 aws-cdk-lib
