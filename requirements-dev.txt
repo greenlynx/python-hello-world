@@ -13,10 +13,7 @@ pyupgrade
 # Testing
 pytest
 pytest-cov
+pytest-gitignore
 
 # Security
 bandit
-
-# CDK
-aws-cdk-lib
-constructs

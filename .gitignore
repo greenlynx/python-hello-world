@@ -1,4 +1,4 @@
-env
+.venv
 cdk.out
 .*_cache
 .coverage

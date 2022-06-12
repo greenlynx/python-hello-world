@@ -1,0 +1,21 @@
+name: Build/test/deploy
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build-test-deploy:
+    name: Build/test/deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.x'
+
+      - run: pre-commit run --all-files
+
+      - run: cdk synth

@@ -1,10 +1,14 @@
+from aws_cdk import App, Stack
+from aws_cdk import aws_apigateway as _apigw
+from aws_cdk import aws_lambda as _lambda
 from constructs import Construct
-from aws_cdk import App, Stack, aws_lambda as _lambda, aws_apigateway as _apigw
+
+# pylint: disable=too-few-public-methods
 
 
 class HelloLambdaStack(Stack):
-    def __init__(self, scope: Construct, id: str, **kwargs) -> None:
-        super().__init__(scope, id, **kwargs)
+    def __init__(self, scope: Construct, id_: str, **kwargs) -> None:
+        super().__init__(scope, id_, **kwargs)
 
         base_lambda = _lambda.Function(
             self,
@@ -18,10 +22,14 @@ class HelloLambdaStack(Stack):
 
         example_entity = base_api.root.add_resource("hello")
         example_entity_lambda_integration = _apigw.LambdaIntegration(
-            base_lambda, proxy=False, integration_responses=[_apigw.IntegrationResponse(status_code="200")]
+            base_lambda,
+            proxy=False,
+            integration_responses=[_apigw.IntegrationResponse(status_code="200")],
         )
         example_entity.add_method(
-            "GET", example_entity_lambda_integration, method_responses=[_apigw.MethodResponse(status_code="200")]
+            "GET",
+            example_entity_lambda_integration,
+            method_responses=[_apigw.MethodResponse(status_code="200")],
         )
 
 
