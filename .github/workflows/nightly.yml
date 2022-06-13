@@ -2,22 +2,14 @@ name: Build/test/deploy
 
 on:
   workflow_dispatch:
-  push:
-
+  cron: '0 10 * * *' # 10am every day
 jobs:
-  build-test-deploy:
+  audit-dependencies:
     name: Build/test/deploy
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2-beta
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-
-      - run: npm install -g aws-cdk
 
       - uses: actions/setup-python@v4
         with:
@@ -28,18 +20,8 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('requirements-dev.txt') }}-${{ hashFiles('requirements.txt') }}
 
+      - run: pip install --upgrade pip
+
       - run: pip install -r ./requirements-dev.txt
 
       - run: pip-audit
-
-      - run: pre-commit run --all-files
-
-      - run: cdk synth
-
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-
-      - run: cdk deploy

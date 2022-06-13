@@ -1,22 +1,10 @@
 import json
 
-from aws_lambda_types.api_gw import (
-    APIGWPayloadV2RequestContextDict,
-    APIGWPayloadV2RequestDict,
-    APIGWPayloadV2ResponseDict,
-)
+from aws_lambda_types.api_gw import APIGWPayloadV1RequestDict
 
 
-def handler(
-    event: APIGWPayloadV2RequestDict, context: APIGWPayloadV2RequestContextDict
-) -> APIGWPayloadV2ResponseDict:
+def handler(event: APIGWPayloadV1RequestDict):
     return {
         "statusCode": 200,
-        "body": json.dumps(
-            {
-                "message": "Hello world!",
-                "foo": event["rawQueryString"],
-                "bar": context["domainName"],
-            }
-        ),
+        "body": json.dumps({"message": "Hello world!", "foo": event["httpMethod"]}),
     }

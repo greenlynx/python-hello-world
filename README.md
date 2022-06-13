@@ -3,6 +3,7 @@
 ## Prerequisites
 
 -   NodeJS v14+ (for CDK)
+-   Docker (for CDK)
 -   Python 3.9
 
 ## Getting started
@@ -26,3 +27,7 @@ pre-commit install                      # set up git hooks
 ## Generate CloudFormation
 
 `cdk synth`
+
+## Deploy
+
+`cdk deploy`

@@ -1,4 +1,4 @@
--r requirements.txt
+-r src/requirements.txt
 
 # General tooling
 pre-commit
@@ -21,3 +21,9 @@ mutmut
 
 # Security
 bandit
+pip-audit
+
+# CDK
+aws-cdk-lib
+aws-cdk.aws-lambda-python-alpha
+constructs>=10.0.0,<11.0.0
