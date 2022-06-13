@@ -11,7 +11,7 @@ class HelloLambdaStack(Stack):
         baseaws_lambda = aws_lambda.Function(
             self,
             "HelloLambda",
-            handler="src/handlers/http/hello.handler",
+            handler="hello.handler",
             runtime=aws_lambda.Runtime.PYTHON_3_9,
             code=aws_lambda.Code.from_asset("src"),
         )
