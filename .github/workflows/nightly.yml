@@ -47,3 +47,10 @@ jobs:
       - run: pip install -r ./requirements-dev.txt
 
       - run: mutmut run
+
+      - run: mutmut html
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mutation-test-results
+          path: html
