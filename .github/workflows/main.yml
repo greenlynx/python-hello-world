@@ -12,13 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2-beta
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-
-      - run: npm install -g aws-cdk
-
       - uses: actions/setup-python@v4
         with:
           python-version: 3.9.x
@@ -37,9 +30,30 @@ jobs:
   deploy:
     name: Deploy
     if: ${{ github.event.ref == 'refs/heads/main' }}
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+
+      - run: npm install -g aws-cdk
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.x
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('requirements-dev.txt') }}-${{ hashFiles('requirements.txt') }}
+
+      - run: pip install -r ./requirements-dev.txt
+
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
