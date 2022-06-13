@@ -1,8 +1,9 @@
 name: Build/test/deploy
 
 on:
-  workflow_dispatch:
-  cron: '0 10 * * *' # 10am every day
+  - workflow_dispatch:
+  - cron: '0 10 * * *' # 10am every day
+
 jobs:
   audit-dependencies:
     name: Build/test/deploy
