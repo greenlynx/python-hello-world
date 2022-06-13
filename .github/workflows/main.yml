@@ -12,9 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@cinch-labs'
+
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9.x'
+
+      - run: npm install -g aws-cdk
 
       - run: pip install -r ./requirements-dev.txt
 
