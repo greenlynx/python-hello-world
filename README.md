@@ -1,6 +1,7 @@
 # Python/Lambda 'hello world' example
 
 ![Build/test/deploy](https://github.com/greenlynx/python-hello-world/actions/workflows/main.yml/badge.svg)
+![Nightly checks](https://github.com/greenlynx/python-hello-world/actions/workflows/nightly.yml/badge.svg)
 
 ## Prerequisites
 
