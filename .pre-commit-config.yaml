@@ -54,8 +54,6 @@ repos:
         language: system
         types: [python]
         require_serial: true
-        #args: [--ignore-paths, .venv, cdk.out]
-        verbose: True
 
     -   id: isort
         name: isort
