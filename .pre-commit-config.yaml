@@ -33,6 +33,13 @@ repos:
         types: [python]
         require_serial: true
 
+-   repo: https://github.com/PyriteAI/pyre-check-pre-commit
+    rev: 0.1.0
+    hooks:
+      - id: pyre-check
+
+-   repo: local
+    hooks:
     -   id: flake8
         name: flake8
         entry: flake8
@@ -47,6 +54,8 @@ repos:
         language: system
         types: [python]
         require_serial: true
+        #args: [--ignore-paths, .venv, cdk.out]
+        verbose: True
 
     -   id: isort
         name: isort
@@ -54,15 +63,6 @@ repos:
         language: system
         types: [python]
         require_serial: true
-
-    -   id: mypy
-        name: mypy
-        entry: mypy
-        language: system
-        types: [python]
-        require_serial: true
-        args: [.]
-        always_run: true
 
     -   id: bandit
         name: bandit
