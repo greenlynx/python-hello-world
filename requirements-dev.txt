@@ -8,6 +8,8 @@ pyupgrade
 pylint
 flake8
 flake8-pytest-style
+flake8-implicit-str-concat
+pep8-naming
 pyre-check
 isort
 black
