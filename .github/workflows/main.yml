@@ -101,6 +101,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: cdk deploy
+      - run: cdk deploy --require-approval never
         env:
           DEPLOY_ENVIRONMENT: dev

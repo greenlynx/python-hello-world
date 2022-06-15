@@ -10,7 +10,11 @@ CDK_OUTPUTS_FILE = "cdk.out/outputs.json"
 
 @pytest.fixture(name="api_base_url")
 def api_base_url_fixture():
-    os.system(f"cdk deploy --hotswap --outputs-file {CDK_OUTPUTS_FILE}")  # nosec B605
+    cdk_command = (
+        "cdk deploy --hotswap  --require-approval never "
+        "--outputs-file {CDK_OUTPUTS_FILE}"
+    )
+    os.system(cdk_command)  # nosec B605
 
     with open(CDK_OUTPUTS_FILE, encoding="utf-8") as file:
         data = json.load(file)
