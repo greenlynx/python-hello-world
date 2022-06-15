@@ -8,11 +8,6 @@ pytestmark = pytest.mark.integration
 CDK_OUTPUTS_FILE = "cdk.out/outputs.json"
 
 
-@pytest.fixture(name="stage_name")
-def stage_name_fixture():
-    return "local-dan"
-
-
 @pytest.fixture(name="api_base_url")
 def api_base_url_fixture():
     os.system(f"cdk deploy --hotswap --outputs-file {CDK_OUTPUTS_FILE}")  # nosec B605

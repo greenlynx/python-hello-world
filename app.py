@@ -1,3 +1,6 @@
+import os
+import pwd
+
 from aws_cdk import App, Stack, aws_apigateway, aws_lambda, aws_lambda_python_alpha
 from constructs import Construct
 
@@ -22,6 +25,12 @@ class HelloLambdaStack(Stack):
         ).root.add_resource("hello").add_method("GET")
 
 
+def get_environment_name():
+    if "DEPLOY_ENVIRONMENT" not in os.environ:
+        return f"local-{pwd.getpwuid(os.getuid()).pw_name}"
+    return os.environ["DEPLOY_ENVIRONMENT"]
+
+
 app = App()
-HelloLambdaStack(app, "HelloLambdaStack")
+HelloLambdaStack(app, f"HelloLambdaStack-{get_environment_name()}")
 app.synth()

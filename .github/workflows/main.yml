@@ -5,8 +5,8 @@ on:
   push:
 
 jobs:
-  build-test:
-    name: Build/test
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -23,14 +23,47 @@ jobs:
 
       - run: pip install -r ./requirements-dev.txt
 
-      - run: pip-audit
-
       - run: pre-commit run --all-files
 
+  run-tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+
+      - run: npm install -g aws-cdk
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.x
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('requirements-dev.txt') }}-${{ hashFiles('requirements.txt') }}
+
+      - run: pip install -r ./requirements-dev.txt
+
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - run: pytest
+        env:
+          DEPLOY_ENVIRONMENT: test
+
   deploy:
-    name: Deploy
+    name: Deploy (dev)
     if: ${{ github.event.ref == 'refs/heads/main' }}
-    needs: build-test
+    needs: run-tests
     runs-on: ubuntu-latest
 
     steps:
@@ -61,3 +94,5 @@ jobs:
           aws-region: eu-west-1
 
       - run: cdk deploy
+        env:
+          DEPLOY_ENVIRONMENT: dev
