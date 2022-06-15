@@ -25,6 +25,9 @@ mutmut
 bandit
 pip-audit
 
+# Integration testing
+requests
+
 # CDK
 aws-cdk-lib
 aws-cdk.aws-lambda-python-alpha
