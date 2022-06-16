@@ -30,6 +30,8 @@ Configure AWS credentials, then:
 
 `pytest`
 
+Code will be automatically deployed to your personal local environment
+
 ## Run mutation tests
 
 `mutmut run`
