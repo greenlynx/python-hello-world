@@ -7,6 +7,7 @@
 
 -   NodeJS v14+ (for CDK)
 -   Docker (for CDK)
+-   AWS CLI
 -   Python 3.9
 
 ## Getting started
@@ -23,14 +24,20 @@ pre-commit install                      # set up git hooks
 
 `pre-commit run --all-files`
 
+## Run all tests (including integration)
+
+Configure AWS credentials, then:
+
+`pytest`
+
 ## Run mutation tests
 
 `mutmut run`
 
-## Generate CloudFormation
-
-`cdk synth`
-
-## Deploy
+## Deploy to your personal local environment
 
 `cdk deploy`
+
+## Deploy to another environment
+
+`DEPLOY_ENVIRONMENT=dev cdk deploy`
