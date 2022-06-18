@@ -7,6 +7,9 @@ checks:
 all-tests:
 	pytest
 
+unit-tests:
+	pytest -m "not integration"
+
 mutation-tests:
 	mutmut run
 

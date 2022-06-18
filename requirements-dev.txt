@@ -17,6 +17,7 @@ autoflake                       # removes unused imports
 # Testing
 pytest                          # testing framework
 pytest-cov                      # code coverage support for tests
+pytest-html-reporter            # HTML reports for tests
 pytest-gitignore                # exclude files ignored by .gitignore from tests
 mutmut                          # mutation testing
 

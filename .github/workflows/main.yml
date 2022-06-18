@@ -64,9 +64,19 @@ jobs:
         env:
           DEPLOY_ENVIRONMENT: test
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: reports/pytest
+
       - run: make zap-scan
         env:
           DEPLOY_ENVIRONMENT: test
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: zap-scan-results
+          path: reports/zap
 
   deploy:
     name: Deploy (dev)
