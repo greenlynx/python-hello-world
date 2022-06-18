@@ -20,7 +20,7 @@ deploy:
 	cdk deploy --require-approval never
 
 get-deployed-api-url:
-	aws cloudformation describe-stacks --stack-name=HelloLambdaStack-local-dan --query "Stacks[0].Outputs" --output json | jq -rc '.[] | select(.OutputKey | test(".*HelloWorldApiEndpoint.*")) | .OutputValue'
+	tools/get-deployed-api-url.sh
 
 get-deployed-host-name:
 	make get-deployed-api-url -s | sed 's/https:\/\///' | sed 's/\/.*//'

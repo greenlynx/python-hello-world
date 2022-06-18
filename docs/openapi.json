@@ -9,7 +9,7 @@
         "https"
     ],
     "host": "foo",
-    "basePath": "/local-dan",
+    "basePath": "/",
     "paths": {
         "/hello": {
             "get": {
