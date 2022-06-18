@@ -1,0 +1,47 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A service for greeting people",
+        "version": "1.0.0",
+        "title": "Hello World "
+    },
+    "schemes": [
+        "https"
+    ],
+    "host": "foo",
+    "basePath": "/local-dan",
+    "paths": {
+        "/hello": {
+            "get": {
+                "summary": "Says hello",
+                "operationId": "hello",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/HelloResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "HelloResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "description": "The message for you",
+                    "type": "string"
+                },
+                "foo": {
+                    "description": "HTTP method used",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

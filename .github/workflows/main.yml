@@ -21,9 +21,9 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('requirements-dev.txt') }}-${{ hashFiles('requirements.txt') }}
 
-      - run: pip install -r ./requirements-dev.txt
+      - run: make install
 
-      - run: pre-commit run --all-files
+      - run: make checks
 
   run-tests:
     name: Run tests
@@ -48,7 +48,7 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('requirements-dev.txt') }}-${{ hashFiles('requirements.txt') }}
 
-      - run: pip install -r ./requirements-dev.txt
+      - run: make install
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -60,7 +60,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: pytest
+      - run: make all-tests
+        env:
+          DEPLOY_ENVIRONMENT: test
+
+      - run: make zap-scan
         env:
           DEPLOY_ENVIRONMENT: test
 
@@ -89,7 +93,7 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('requirements-dev.txt') }}-${{ hashFiles('requirements.txt') }}
 
-      - run: pip install -r ./requirements-dev.txt
+      - run: make install
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -101,6 +105,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: cdk deploy --require-approval never
+      - run: make deploy
         env:
           DEPLOY_ENVIRONMENT: dev

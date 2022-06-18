@@ -1,34 +1,33 @@
--r src/requirements.txt
+-r src/requirements.txt         # installs the runtime dependencies as well
 
 # General tooling
-pre-commit
-pyupgrade
+pre-commit                      # manage git hooks
+pyupgrade                       # automatically upgrade old-style Python syntax to newer style
 
-# Linting and style checking
-pylint
-flake8
-flake8-pytest-style
-flake8-implicit-str-concat
-pep8-naming
-pyre-check
-isort
-black
-autoflake
+# Linting and style checking/fixing
+pylint                          # linter
+flake8                          # another linter
+flake8-pytest-style             # plugin to enforce some rules around tests
+pep8-naming                     # checks code against PEP8 naming conventions
+pyre-check                      # type checker
+isort                           # puts imports into a consistent ordwe
+black                           # opinionated code style fixer
+autoflake                       # removes unused imports
 
 # Testing
-pytest
-pytest-cov
-pytest-gitignore
-mutmut
+pytest                          # testing framework
+pytest-cov                      # code coverage support for tests
+pytest-gitignore                # exclude files ignored by .gitignore from tests
+mutmut                          # mutation testing
 
 # Security
-bandit
-pip-audit
+bandit                          # static analysis for insecure code
+pip-audit                       # audits packages for vulnerabilities
 
 # Integration testing
-requests
+requests                        # makes HTTP requests
 
 # CDK
-aws-cdk-lib
-aws-cdk.aws-lambda-python-alpha
-constructs>=10.0.0,<11.0.0
+aws-cdk-lib                     # main CDK package
+aws-cdk.aws-lambda-python-alpha # experimental higher-level construct for Python lambdas (needs Docker)
+constructs>=10.0.0,<11.0.0      # construct library used by CDK

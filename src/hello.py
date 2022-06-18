@@ -9,4 +9,8 @@ def handler(
     return {
         "statusCode": 200,
         "body": json.dumps({"message": "Hello world!", "foo": event["httpMethod"]}),
+        "headers": {
+            "X-Content-Type-Options": "nosniff",
+            "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        },
     }

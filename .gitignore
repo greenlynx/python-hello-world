@@ -5,4 +5,10 @@ cdk.out
 .coverage
 __pycache__
 html
+reports
 .pyre
+*.transformed.json
+
+.vscode
+!.vscode/extensions.json
+!.vscode/settings.json
