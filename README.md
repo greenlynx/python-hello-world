@@ -26,7 +26,7 @@ pre-commit install                      # set up git hooks
 
 ## Features
 
--   Bundled VS Code settings to standard everyone's dev experience
+-   Bundled VS Code settings to standardise everyone's dev experience
 -   Makefile to make running common commands easier
 -   Uses various linting and code style tools to automatically keep the codebase clean
 -   Uses git hooks to check code before it is committed
