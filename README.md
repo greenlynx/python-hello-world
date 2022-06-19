@@ -42,6 +42,7 @@ pre-commit install                      # set up git hooks
 -   ZAP scans used to test the deployed API for vulnerabilities
 -   CDK automatically checked for best practice and security issues
 -   OpenAPI specification that is automatically tested against the API for accuracy
+-   Automatically generated HTML API documentation
 -   Automatically generated CDK diagram
 
 ## Run checks and unit tests

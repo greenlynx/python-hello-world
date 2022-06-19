@@ -48,3 +48,6 @@ schemathesis:
 
 cdk-diagram:
 	npx cdk-dia
+
+api-docs:
+	npx redoc-cli build docs/openapi.json

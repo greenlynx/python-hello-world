@@ -11,3 +11,4 @@ reports
 .vscode
 !.vscode/extensions.json
 !.vscode/settings.json
+redoc-static.html

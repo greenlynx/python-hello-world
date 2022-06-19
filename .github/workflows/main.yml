@@ -25,6 +25,13 @@ jobs:
 
       - run: make checks
 
+      - run: make api-docs
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: api-docs
+          path: redoc-static.html
+
   run-tests:
     name: Run tests
     runs-on: ubuntu-latest
