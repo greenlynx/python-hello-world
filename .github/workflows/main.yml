@@ -28,6 +28,8 @@ jobs:
   run-tests:
     name: Run tests
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_ENVIRONMENT: test
 
     steps:
       - uses: actions/checkout@v2
@@ -61,8 +63,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: make all-tests
-        env:
-          DEPLOY_ENVIRONMENT: test
 
       - uses: actions/upload-artifact@v3
         with:
@@ -70,12 +70,8 @@ jobs:
           path: reports/pytest
 
       - run: make schemathesis
-        env:
-          DEPLOY_ENVIRONMENT: test
 
       - run: make zap-scan
-        env:
-          DEPLOY_ENVIRONMENT: test
 
       - uses: actions/upload-artifact@v3
         with:
@@ -87,6 +83,8 @@ jobs:
     if: ${{ github.event.ref == 'refs/heads/main' }}
     needs: [lint, run-tests]
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_ENVIRONMENT: dev
 
     steps:
       - uses: actions/checkout@v2
@@ -120,5 +118,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: make deploy
-        env:
-          DEPLOY_ENVIRONMENT: dev
+
+      - run: make smoke-test
