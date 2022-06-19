@@ -3,7 +3,7 @@
 ![Lint/test/deploy](https://github.com/greenlynx/python-hello-world/actions/workflows/main.yml/badge.svg)
 ![Nightly checks](https://github.com/greenlynx/python-hello-world/actions/workflows/nightly.yml/badge.svg)
 
-This is a small 'hello world' example I've been using to experiment with building a simple Python lambda, and trying out some of the tooling in the Python ecosystem. It hosts a GET endpoint, and makes calls to a downstream REST API to construct its response. The downstream API is stubbed out in all tests, including integration tests, which run in an isolated environment, so this API can be tested in isolation on real AWS infrastructure.
+This is a small 'hello world' example I've been using to experiment with building a simple Python lambda, and trying out some of the tooling in the Python ecosystem. It hosts a GET endpoint, and makes calls to a downstream REST API to construct its response.
 
 ![Architecture diagram](diagram.png)
 
@@ -23,6 +23,25 @@ source .venv/bin/activate               # activate virtual environment
 make install                            # install packages
 pre-commit install                      # set up git hooks
 ```
+
+## Features
+
+-   Bundled VS Code settings to standard everyone's dev experience
+-   Makefile to make running common commands easier
+-   Uses various linting and code style tools to automatically keep the codebase clean
+-   Uses git hooks to check code before it is committed
+-   Uses CDK to define infrastructure as code
+-   Pytest unit tests with full coverage - external dependencies such as HTTP calls are stubbed
+-   Nightly mutation testing to ensure the unit tests cover all functionality
+-   Pytest integration tests that run on real AWS infrastructure, with stubbed HTTP dependencies for isolated testing
+-   Each developer gets their own, isolated AWS environment for running tests and exploratory testing
+-   GitHub Actions workflows to run checks and deploy
+-   Smoke tests after deploying to each environment
+-   Nightly dependency checks to detect the use of insecure packages
+-   Static analysis for security issues using Bandit
+-   ZAP scans used to test the deployed API for vulnerabilities
+-   OpenAPI specification that is automatically tested against the API for accuracy
+-   Automatically generated CDK diagram
 
 ## Run checks and unit tests
 
