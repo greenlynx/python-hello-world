@@ -40,6 +40,7 @@ pre-commit install                      # set up git hooks
 -   Nightly dependency checks to detect the use of insecure packages
 -   Static analysis for security issues using Bandit
 -   ZAP scans used to test the deployed API for vulnerabilities
+-   CDK automatically checked for best practice and security issues
 -   OpenAPI specification that is automatically tested against the API for accuracy
 -   Automatically generated CDK diagram
 
