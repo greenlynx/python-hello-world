@@ -5,6 +5,8 @@
 
 This is a small 'hello world' example I've been using to experiment with building a simple Python lambda, and trying out some of the tooling in the Python ecosystem.
 
+![Architecture diagram](diagram.png)
+
 ## Prerequisites
 
 -   NodeJS v14+ (for CDK)
@@ -34,15 +36,26 @@ Configure AWS credentials, then:
 
 Code will be automatically deployed to your personal local environment
 
+## Run schema tests (Schemathesis)
+
+These tests ensure that the OpenAPI spec matches the API's actual schema, and also perform some fuzz testing against the API.
+
+`make schemathesis`
+
 ## Run API security tests (ZAP scan)
+
+These tests scan the API for security issues.
 
 `make zap-scan`
 
 ## Run mutation tests
 
+These tests introduce "mutations" into the codebase to check that the unit tests cover everything they should be covering.
 `make mutation-tests`
 
 ## Deploy to your personal local environment
+
+This deploys the code to your own, personal environment in AWS, so you can run tests against it without impacting other developers.
 
 `make deploy`
 

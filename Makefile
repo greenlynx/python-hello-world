@@ -45,3 +45,6 @@ zap-scan:
 
 schemathesis:
 	tools/schemathesis.sh
+
+cdk-diagram:
+	npx cdk-dia
