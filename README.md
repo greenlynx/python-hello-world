@@ -3,7 +3,7 @@
 ![Lint/test/deploy](https://github.com/greenlynx/python-hello-world/actions/workflows/main.yml/badge.svg)
 ![Nightly checks](https://github.com/greenlynx/python-hello-world/actions/workflows/nightly.yml/badge.svg)
 
-This is a small 'hello world' example I've been using to experiment with building a simple Python lambda, and trying out some of the tooling in the Python ecosystem.
+This is a small 'hello world' example I've been using to experiment with building a simple Python lambda, and trying out some of the tooling in the Python ecosystem. It hosts a GET endpoint, and makes calls to a downstream REST API to construct its response. The downstream API is stubbed out in all tests, including integration tests, which run in an isolated environment, so this API can be tested in isolation on real AWS infrastructure.
 
 ![Architecture diagram](diagram.png)
 
