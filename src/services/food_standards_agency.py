@@ -1,3 +1,4 @@
+from os import environ
 from typing import NamedTuple
 
 import requests
@@ -8,8 +9,9 @@ class EstablishmentInfo(NamedTuple):
 
 
 def get_establishment_name(id_: str) -> EstablishmentInfo:
+    fhrs_api_url = environ["FHRS_API_BASE_URL"]
     response = requests.get(
-        f"https://api.ratings.food.gov.uk/establishments/list?id={id_}",
+        f"{fhrs_api_url}?id={id_}",
         headers={"x-api-version": "2"},
     )
     response.raise_for_status()

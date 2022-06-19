@@ -4,5 +4,5 @@ ignore=cdk.out/**/*
 
 [MESSAGES CONTROL]
 
-disable=missing-module-docstring,missing-function-docstring,missing-class-docstring,import-error
+disable=missing-module-docstring,missing-function-docstring,missing-class-docstring,import-error,no-name-in-module
 output-format=colorized
