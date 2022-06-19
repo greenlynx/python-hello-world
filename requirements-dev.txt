@@ -31,3 +31,4 @@ pip-audit==2.3.3                           # audits packages for vulnerabilities
 aws-cdk-lib==2.28.1                        # main CDK package
 aws-cdk.aws-lambda-python-alpha==2.28.1.a0 # experimental higher-level construct for Python lambdas (needs Docker)
 constructs==10.1.42                        # construct library used by CDK
+cdk-nag==2.14.38                           # checks CDK code for issues

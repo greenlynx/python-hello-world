@@ -38,7 +38,7 @@ get-deployed-path:
 	make get-deployed-api-url -s | sed 's/\/$$//' | sed 's/.*\///'
 
 smoke-test:
-	tools/smoke-test.schemathesis
+	tools/smoke-test.sh
 
 zap-scan:
 	tools/zap-scan.sh
