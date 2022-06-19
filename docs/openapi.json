@@ -20,7 +20,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Successful operation",
                         "schema": {
                             "$ref": "#/definitions/HelloResponse"
                         }
@@ -32,13 +32,13 @@
     "definitions": {
         "HelloResponse": {
             "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "message"
+            ],
             "properties": {
                 "message": {
                     "description": "The message for you",
-                    "type": "string"
-                },
-                "foo": {
-                    "description": "HTTP method used",
                     "type": "string"
                 }
             }
