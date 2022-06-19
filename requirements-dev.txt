@@ -9,24 +9,23 @@ pylint                          # linter
 flake8                          # another linter
 flake8-pytest-style             # plugin to enforce some rules around tests
 pep8-naming                     # checks code against PEP8 naming conventions
-pyre-check                      # type checker
 isort                           # puts imports into a consistent ordwe
 black                           # opinionated code style fixer
 autoflake                       # removes unused imports
 
 # Testing
 pytest                          # testing framework
+pytest-mock                     # mocking helpers for pytest
+pytest-watcher                  # run tests when files chane for an easy TDD workflow
 pytest-cov                      # code coverage support for tests
 pytest-html-reporter            # HTML reports for tests
 pytest-gitignore                # exclude files ignored by .gitignore from tests
+pook                            # HTTP mocking
 mutmut                          # mutation testing
 
 # Security
 bandit                          # static analysis for insecure code
 pip-audit                       # audits packages for vulnerabilities
-
-# Integration testing
-requests                        # makes HTTP requests
 
 # CDK
 aws-cdk-lib                     # main CDK package

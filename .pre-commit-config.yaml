@@ -33,11 +33,6 @@ repos:
         types: [python]
         require_serial: true
 
--   repo: https://github.com/PyriteAI/pyre-check-pre-commit
-    rev: 0.1.0
-    hooks:
-      - id: pyre-check
-
 -   repo: local
     hooks:
     -   id: flake8

@@ -1,1 +1,1 @@
-aws-lambda-types                # typed classes for lambda functions
+requests                        # make HTTP requests

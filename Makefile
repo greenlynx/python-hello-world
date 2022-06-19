@@ -4,20 +4,29 @@ install:
 checks:
 	pre-commit run --all-files
 
-all-tests:
-	pytest
-
 unit-tests:
 	pytest -m "not integration"
+
+watch-unit-tests:
+	ptw . -m "not integration"
+
+integration-tests:
+	pytest -m "integration"
+
+watch-integration-tests:
+	ptw . -m integration
+
+all-tests:
+	pytest
 
 mutation-tests:
 	mutmut run
 
 deploy-non-prod:
-	cdk deploy --hotswap --require-approval never
+	cdk deploy --all --hotswap --require-approval never
 
 deploy:
-	cdk deploy --require-approval never
+	cdk deploy --all --require-approval never
 
 get-deployed-api-url:
 	tools/get-deployed-api-url.sh
@@ -30,3 +39,6 @@ get-deployed-path:
 
 zap-scan:
 	tools/zap-scan.sh
+
+schemathesis:
+	tools/schemathesis.sh

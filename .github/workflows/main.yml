@@ -69,6 +69,10 @@ jobs:
           name: test-results
           path: reports/pytest
 
+      - run: make schemathesis
+        env:
+          DEPLOY_ENVIRONMENT: test
+
       - run: make zap-scan
         env:
           DEPLOY_ENVIRONMENT: test

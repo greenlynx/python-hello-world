@@ -6,7 +6,6 @@ cdk.out
 __pycache__
 html
 reports
-.pyre
 *.transformed.json
 
 .vscode
