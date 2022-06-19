@@ -18,7 +18,7 @@ from constructs import Construct
 app = App()
 
 Aspects.of(app).add(AwsSolutionsChecks(verbose=True))
-non_test_environments = ["dev", "staging", "prod"]
+non_test_environments = ["dev", "test", "staging", "prod"]
 
 if "DEPLOY_ENVIRONMENT" not in non_test_environments:
     environment_name = f"local-{pwd.getpwuid(os.getuid()).pw_name}"
