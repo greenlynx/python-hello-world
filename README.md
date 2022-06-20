@@ -17,7 +17,7 @@ This is a small 'hello world' example I've been using to experiment with buildin
 ## Getting started
 
 ```
-npm install -g aws-cdk                  # install CDK CLI tool
+npm install -g aws-cdk cdk-dia          # install CDK CLI tool and diagram generation tool
 python -m venv .venv                    # create virtual environment
 source .venv/bin/activate               # activate virtual environment
 make install                            # install packages
@@ -43,7 +43,12 @@ pre-commit install                      # set up git hooks
 -   CDK automatically checked for best practice and security issues
 -   OpenAPI specification that is automatically tested against the API for accuracy
 -   Automatically generated HTML API documentation
--   Automatically generated CDK diagram
+-   Machine-generated CDK diagram
+
+## TODO
+
+-   Make CDK diagram update automatically when infra is changed
+-   Some work to do to tighten security of CDK and remove cdk-nag rule exclusions
 
 ## Run checks and unit tests
 

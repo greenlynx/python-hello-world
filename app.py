@@ -20,9 +20,11 @@ app = App()
 Aspects.of(app).add(AwsSolutionsChecks(verbose=True))
 non_test_environments = ["dev", "staging", "prod"]
 
-environment_name = os.environ["DEPLOY_ENVIRONMENT"]
-if not environment_name:
-    environment_name = f"local-{pwd.getpwuid(os.getuid()).pw_name}"
+if "DEPLOY_ENVIRONMENT" in os.environ:
+    environment_name = os.environ["DEPLOY_ENVIRONMENT"]
+else:
+    user_name = pwd.getpwuid(os.getuid()).pw_name.replace(".", "-")
+    environment_name = f"local-{user_name}"
 
 IS_TEST_ENVIRONMENT = environment_name not in non_test_environments
 
