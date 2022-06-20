@@ -72,6 +72,7 @@ These tests scan the API for security issues.
 ## Run mutation tests
 
 These tests introduce "mutations" into the codebase to check that the unit tests cover everything they should be covering.
+
 `make mutation-tests`
 
 ## Deploy to your personal local environment
