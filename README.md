@@ -49,6 +49,8 @@ pre-commit install                      # set up git hooks
 
 -   Make CDK diagram update automatically when infra is changed
 -   Some work to do to tighten security of CDK and remove cdk-nag rule exclusions
+-   Logging, tracing and metrics
+-   Operational dashboard
 
 ## Run checks and unit tests
 
