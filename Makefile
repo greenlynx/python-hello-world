@@ -23,13 +23,16 @@ mutation-tests:
 	mutmut run
 
 deploy-non-prod:
-	cdk deploy --all --hotswap --require-approval never
+	cdk deploy --all --require-approval never --hotswap
 
 deploy:
 	cdk deploy --all --require-approval never
 
 get-deployed-api-url:
 	tools/get-deployed-api-url.sh
+
+get-deployed-api-key-value:
+	tools/get-deployed-api-key-value.sh
 
 get-deployed-host-name:
 	make get-deployed-api-url -s | sed 's/https:\/\///' | sed 's/\/.*//'

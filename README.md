@@ -31,6 +31,7 @@ pre-commit install                      # set up git hooks
 -   Uses various linting and code style tools to automatically keep the codebase clean
 -   Uses git hooks to check code before it is committed
 -   Uses CDK to define infrastructure as code
+-   Secured by an API key
 -   Pytest unit tests with full coverage - external dependencies such as HTTP calls are stubbed
 -   Nightly mutation testing to ensure the unit tests cover all functionality
 -   Pytest integration tests that run on real AWS infrastructure, with stubbed HTTP dependencies for isolated testing

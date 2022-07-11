@@ -1,10 +1,12 @@
 import os
 import pwd
+import hashlib
 
 from aws_cdk import (
     App,
     Aspects,
     Stack,
+    CfnOutput,
     aws_apigateway,
     aws_lambda,
     aws_lambda_python_alpha,
@@ -32,12 +34,17 @@ if IS_TEST_ENVIRONMENT:
 
     class TestStubsStack(Stack):
         def __init__(self, scope: Construct, id_: str, **kwargs) -> None:
-            super().__init__(scope, id_, **kwargs)
+            super().__init__(
+                scope,
+                id_,
+                description=f"Test stubs for the Hello World service in the {environment_name} environment",
+                **kwargs,
+            )
 
             self.food_standards_agency_url = (
                 aws_lambda_python_alpha.PythonFunction(
                     self,
-                    "HelloLambda",
+                    "FhrsApiStubLambda",
                     entry="./test/stubs",
                     runtime=aws_lambda.Runtime.PYTHON_3_9,
                     index="food_standards_agency.py",
@@ -51,7 +58,7 @@ if IS_TEST_ENVIRONMENT:
             return self.food_standards_agency_url
 
     test_stubs_stack = TestStubsStack(
-        app, f"HelloLambdaTestStubsStack-{environment_name}"
+        app, f"HelloWorldTestStubsStack-{environment_name}"
     )
     NagSuppressions.add_stack_suppressions(
         test_stubs_stack,
@@ -71,8 +78,10 @@ else:
         raise f"Unknown environment {environment_name}"
 
 
-class HelloLambdaStack(Stack):
-    def __init__(self, scope: Construct, id_: str, **kwargs) -> None:
+class HelloWorldStack(Stack):
+    def __init__(
+        self, scope: Construct, id_: str, api_key_value: str, **kwargs
+    ) -> None:
         super().__init__(scope, id_, **kwargs)
 
         hello_function = aws_lambda_python_alpha.PythonFunction(
@@ -87,7 +96,7 @@ class HelloLambdaStack(Stack):
 
         api = aws_apigateway.LambdaRestApi(
             self,
-            "HelloWorldApi",
+            f"HelloWorldApi-{environment_name}",
             handler=hello_function,
             proxy=False,
             deploy_options=aws_apigateway.StageOptions(
@@ -103,10 +112,30 @@ class HelloLambdaStack(Stack):
             request_validator_options={
                 "validate_request_parameters": True,
             },
+            api_key_required=True,
         )
+        api_key = aws_apigateway.ApiKey(
+            self,
+            "TestAutomationApiKeys",
+            description="API key used for automated testing",
+            value=api_key_value,
+        )
+        api.add_usage_plan(
+            "TestAutomationUsagePlan",
+            api_stages=[{"api": api, "stage": api.deployment_stage}],
+        ).add_api_key(api_key)
+
+        if api_key_value:
+            CfnOutput(self, "ApiKey", value=api_key_value)
 
 
-main_stack = HelloLambdaStack(app, f"HelloLambdaStack-{environment_name}")
+main_stack = HelloWorldStack(
+    app,
+    f"HelloWorldStack-{environment_name}",
+    api_key_value=hashlib.sha256(environment_name.encode())
+    if IS_TEST_ENVIRONMENT
+    else "",
+)
 NagSuppressions.add_stack_suppressions(
     main_stack,
     [
